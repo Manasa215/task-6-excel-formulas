@@ -1,0 +1,20 @@
+name: Validate Task 6 repository
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate-files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Verify required deliverables
+        run: |
+          test -f README.md
+          test -f Task6_Excel_Formulas_Workbook.xlsx
+          test -f docs/FORMULA_NOTES.md
+          test -f docs/ROLLBACK_EVIDENCE.md
+          test -f deployment/DEPLOYMENT.md
+          echo "Required Task 6 files are present."
